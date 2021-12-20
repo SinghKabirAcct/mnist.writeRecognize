@@ -13,6 +13,5 @@ How-To-Use:
 
 How-To-Install:
  - After cloning this repo and cd-ing into the directory:
-   - [Python Compiler Referece] flask_init.py
-    - Ex. python3 flask_init.py
+   - python3 flask_init.py
    - Open '127.0.0.1:5000' in any browser while flask is running in your terminal
