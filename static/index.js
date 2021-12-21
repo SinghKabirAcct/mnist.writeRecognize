@@ -40,6 +40,24 @@ const drawLine = (x, y, xNew, yNew) => {
     x = e.offsetX
     y = e.offsetY
   })
+  canvas.addEventListener("touchstart", (e) => {
+    if(e.target==canvas){
+        e.preventDefault()
+    }
+    drawOn = true
+    x = e.touches[0].clientX
+    y = e.touches[0].clientY
+  })
+  canvas.addEventListener("touchmove", (e) => {
+    if(e.target==canvas){
+        e.preventDefault()
+    }
+    if (drawOn==true){
+      drawLine(x, y, e.touches[0].clientX, e.touched[0].clientY)
+      x = e.touches[0].clientX
+      y = e.touched[0].clientY
+    }
+  })
   canvas.addEventListener("mousemove", (e) => {
     if (drawOn==true){
       drawLine(x, y, e.offsetX, e.offsetY)
@@ -49,6 +67,15 @@ const drawLine = (x, y, xNew, yNew) => {
   })
   canvas.addEventListener("mouseup", (e) => {
     drawLine(x, y, e.offsetX, e.offsetY)
+    x = 0
+    y = 0
+    drawOn = false
+  })
+  canvas.addEventListener("touchend", (e) => {
+    if(e.target==canvas){
+        e.preventDefault()
+    }
+    drawLine(x, y, e.touches[0].clientX, e.touches[0].clientY)
     x = 0
     y = 0
     drawOn = false
